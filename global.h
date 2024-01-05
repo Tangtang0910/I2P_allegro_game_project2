@@ -12,12 +12,21 @@
 #define field_width 600
 #define field_height 600
 
+//new created Element
+#define Num_ElementType 3
+
 #define Num_TowerType 5
 #define Num_MonsterType 4
 #define NumOfGrid (field_width / grid_width) * (field_height / grid_height)
 
 extern int TowerRadius[];
 extern char TowerClass[][20];
+
+//new created Element
+extern char ElementType[][3];
+extern int ElementWidth[];
+extern int ElementHeight[];
+
 extern int TowerWidth[];
 extern int TowerHeight[];
 extern bool key_state[ALLEGRO_KEY_MAX];
