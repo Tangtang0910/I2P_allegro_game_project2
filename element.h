@@ -13,11 +13,11 @@
 
 #include "global.h"
 
-class Tower : public Object
+class Element : public Object
 {
 public:
-    Tower(int = 0, int = 0);
-    virtual ~Tower();
+    Element(int = 0, int = 0);
+    virtual ~Element();
 
     // override virtual function "Object::Draw"
     void Draw();

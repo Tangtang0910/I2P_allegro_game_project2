@@ -63,10 +63,10 @@ Alchemy_room::isOnPot()
     return false;
 }
 
-Tower*
+Element*
 Alchemy_room::create_element(int type)
 {
-    Tower *t = NULL;
+    Element *t = NULL;
 
     if(isOnPot())
         return t;
@@ -192,10 +192,10 @@ void
 Alchemy_room::Alchemy_reset()
 {
     // reset game and begin
-    for(auto&& child : towerSet) {
+    for(auto&& child : ElementSet) {
         delete child;
     }
-    towerSet.clear();
+    ElementSet.clear();
 
 
     selectedElement = -1;
@@ -255,22 +255,22 @@ Alchemy_room::process_Alchemy_event()
     else if(event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN) {
         if(event.mouse.button == 1) {
             if(selectedElement != -1 && mouse_hover(0, 0, field_width, field_height)) {
-                Tower *t = create_element(selectedElement);
+                Element *t = create_element(selectedElement);
 
                 if(t == NULL)
                     printf("Wrong place\n");
                 else {
-                    towerSet.push_back(t);
+                    ElementSet.push_back(t);
                     //towerSet.sort(compare);
                 }
             } else if(selectedElement == -1){
-                std::list<Tower*>::iterator it = towerSet.begin();
+                std::list<Element*>::iterator it = ElementSet.begin();
                 if(lastClicked != -1)
                 {
                     std::advance(it, lastClicked);
                     (*it)->ToggleClicked();
                 }
-                for(i=0, it = towerSet.begin(); it != towerSet.end(); it++, i++)
+                for(i=0, it = ElementSet.begin(); it != ElementSet.end(); it++, i++)
                 {
                     Circle *circle = (*it)->getCircle();
                     int t_width = (*it)->getWidth();
@@ -340,12 +340,12 @@ Alchemy_room::draw_Alchemy_running_map()
         }
     }
 
-    for(std::list<Tower*>::iterator it = towerSet.begin(); it != towerSet.end(); it++)
+    for(std::list<Element*>::iterator it = ElementSet.begin(); it != ElementSet.end(); it++)
         (*it)->Draw();
 
-    /*if(selectedElement != -1)
-        Tower::selectedElement(mouse_x, mouse_y, selectedElement);
-    */
+    if(selectedElement != -1)
+        Element::SelectedElement(mouse_x, mouse_y, selectedElement);
+    
     al_draw_filled_rectangle(field_width, 0, window_width, window_height, al_map_rgb(100, 100, 100));
 
     menu->Draw();

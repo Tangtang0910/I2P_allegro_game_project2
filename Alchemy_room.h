@@ -46,7 +46,7 @@ public:
     bool mouse_hover(int, int, int, int);
     bool isOnPot();
 //改成elements
-    Tower* create_element(int);
+    Element* create_element(int);
     void Alchemy_init();
 
 private:
@@ -65,8 +65,8 @@ private:
 
     LEVEL *level = NULL;
     Menu *menu = NULL;
-//改成elements
-    std::list<Tower*> &towerSet = DC->get_Tower();
+
+    std::list<Element*> &ElementSet = DC->get_Element();
 
     int mouse_x, mouse_y;
     int selectedElement = -1, lastClicked = -1;

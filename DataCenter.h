@@ -5,6 +5,8 @@
 #include "Monster.h"
 #include "Tower.h"
 #include "Hero.h"
+#include "element.h"
+#include "Alchemy_room.h"
 
 class DataCenter{
 public:
@@ -16,12 +18,17 @@ public:
     {
         return towerSet;
     }
+    std::list<Element*>& get_Element()
+    {
+        return ElementSet;
+    }
     Hero &get_Hero(){
         return dragonite;
     }
 private:
     std::vector<Monster*> monsterSet;
     std::list<Tower*> towerSet;
+    std::list<Element*> ElementSet;
     Hero dragonite;
 };
 

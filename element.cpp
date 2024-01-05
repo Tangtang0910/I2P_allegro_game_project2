@@ -1,24 +1,22 @@
 #include "element.h"
 
-Tower::Tower(int pos_x, int pos_y)
+Element::Element(int pos_x, int pos_y)
 {
     this->circle = new Circle(pos_x, pos_y, 70);
 }
 
-Tower::~Tower()
+Element::~Element()
 {
     delete circle;
 
     al_destroy_bitmap(img);
-
-    
 }
 
 void
-Tower::Draw()
+Element::Draw()
 {
-    int draw_x = circle->x - (TowerWidth[this->type]/2);
-    int draw_y = circle->y - (TowerHeight[this->type] - (TowerWidth[this->type]/2));
+    int draw_x = circle->x - (ElementWidth[this->type]/2);
+    int draw_y = circle->y - (ElementHeight[this->type] - (ElementWidth[this->type]/2));
 
 
     al_draw_bitmap(img, draw_x, draw_y, 0);
@@ -31,14 +29,14 @@ Tower::Draw()
 }
 
 void
-Tower::SelectedElement(int mouse_x, int mouse_y, int type)
+Element::SelectedElement(int mouse_x, int mouse_y, int type)
 {
-    int draw_x = mouse_x - (TowerWidth[type]/2);
-    int draw_y = mouse_y - (TowerHeight[type] - (TowerWidth[type]/2));
+    int draw_x = mouse_x - (ElementWidth[type]/2);
+    int draw_y = mouse_y - (ElementHeight[type] - (ElementWidth[type]/2));
     char filename[50];
     ALLEGRO_BITMAP *bitmap;
 
-    sprintf(filename, "./Tower/%s.png", TowerClass[type]);
+    sprintf(filename, "./Element/%s.png", ElementType[type]);
     bitmap = al_load_bitmap(filename);
 
     al_draw_bitmap(bitmap, draw_x, draw_y, 0);
