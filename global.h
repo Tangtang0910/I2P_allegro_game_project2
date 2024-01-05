@@ -33,6 +33,9 @@ extern int TowerWidth[];
 extern int TowerHeight[];
 extern bool key_state[ALLEGRO_KEY_MAX];
 
+//new created Element
+enum {Material = 0, Grass, Mineral, Liquid};
+
 enum {ARCANE = 0, ARCHER, CANON, POISON, STORM};
 enum {WOLF = 0, WOLFKNIGHT, DEMONNIJIA, CAVEMAN};
 
