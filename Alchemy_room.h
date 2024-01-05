@@ -7,7 +7,8 @@
 #include <list>
 #include <time.h>
 #include "Menu.h"
-#include "Level.h"
+#include "element.h"
+
 
 #define GAME_INIT -1
 #define GAME_SETTING 0
@@ -63,7 +64,6 @@ private:
     ALLEGRO_EVENT event;
     ALLEGRO_TIMER *timer = NULL;
 
-    LEVEL *level = NULL;
     Menu *menu = NULL;
 
     std::list<Element*> &ElementSet = DC->get_Element();

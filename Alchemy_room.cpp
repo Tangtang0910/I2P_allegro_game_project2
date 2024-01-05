@@ -3,6 +3,7 @@
 #include"Alchemy_room.h"
 #include "global.h"
 #include "element.h"
+#include "Level.h"
 
 #define WHITE al_map_rgb(255, 255, 255)
 #define BLACK al_map_rgb(0, 0, 0)
@@ -50,15 +51,15 @@ Alchemy_room::isOnPot()
     {
         startx = (i % 15) * 40;
         starty = (i / 15) * 40;
-
-        if(level->isPot(i)) {
+        //level->isPot(i)
+        /*if(1) {
             if((mouse_x + (widthOfElement/2) < startx) || (mouse_x - (widthOfElement/2) > startx + grid_width))
                 continue;
             else if((mouse_y + (widthOfElement/2) < starty) || (mouse_y > starty + grid_height))
                 continue;
             else
                 return true;
-        }
+        }*/
     }
     return false;
 }
@@ -161,7 +162,6 @@ Alchemy_room::Alchemy_room()
 void
 Alchemy_room::Alchemy_begin()
 {
-    printf(">>> Start Level[%d]\n", level->getLevel());
     draw_Alchemy_running_map();
 
     al_start_timer(timer);
@@ -183,7 +183,7 @@ int
 Alchemy_room::Alchemy_update()
 {
     unsigned int i, j;
-    std::list<Tower*>::iterator it;
+    std::list<Element*>::iterator it;
 
     return GAME_CONTINUE;
 }
@@ -202,7 +202,7 @@ Alchemy_room::Alchemy_reset()
     lastClicked = -1;
 
     redraw = false;
-    menu->Reset();
+    //menu->Reset();
 
     // stop timer
     al_stop_timer(timer);
@@ -227,8 +227,6 @@ Alchemy_room::Alchemy_destroy()
     al_destroy_bitmap(pot);
     al_destroy_bitmap(background);
 
-
-    delete level;
     delete menu;
 }
 
@@ -288,7 +286,7 @@ Alchemy_room::process_Alchemy_event()
             }
             // check if user wants to create some kind of tower
             // if so, show tower image attached to cursor
-            selectedElement = menu->MouseIn(mouse_x, mouse_y);
+            //selectedElement = menu->MouseIn(mouse_x, mouse_y);
 
         }
     }
@@ -296,7 +294,7 @@ Alchemy_room::process_Alchemy_event()
         mouse_x = event.mouse.x;
         mouse_y = event.mouse.y;
 
-        menu->MouseIn(mouse_x, mouse_y);
+        //menu->MouseIn(mouse_x, mouse_y);
 
     }
 
@@ -333,9 +331,6 @@ Alchemy_room::draw_Alchemy_running_map()
         {
             char buffer[50];
             sprintf(buffer, "%d", i*15 + j);
-            if(level->isRoad(i*15 + j)) {
-                al_draw_filled_rectangle(j*40, i*40, j*40+40, i*40+40, al_map_rgb(255, 244, 173));
-            }
             //al_draw_text(font, al_map_rgb(0, 0, 0), j*40, i*40, ALLEGRO_ALIGN_CENTER, buffer);
         }
     }
@@ -348,7 +343,7 @@ Alchemy_room::draw_Alchemy_running_map()
     
     al_draw_filled_rectangle(field_width, 0, window_width, window_height, al_map_rgb(100, 100, 100));
 
-    menu->Draw();
+    //menu->Draw();
 
     al_flip_display();//把所有畫面呈現出來
 }
