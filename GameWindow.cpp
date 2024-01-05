@@ -11,7 +11,7 @@ GameWindow::GameWindow()
     display = al_create_display(window_width, window_height);
     event_queue = al_create_event_queue();
 
-    al_set_window_position(display, 0, 0); //螢幕出現位置
+    al_set_window_position(display, 270, 80); //螢幕出現位置
     al_set_window_title(display, title);
     al_init_primitives_addon();
     al_init_font_addon(); // initialize the font addon
