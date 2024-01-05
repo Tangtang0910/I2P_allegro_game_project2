@@ -19,6 +19,8 @@
 #define Num_MonsterType 4
 #define NumOfGrid (field_width / grid_width) * (field_height / grid_height)
 
+extern ALLEGRO_EVENT_QUEUE *event_queue;
+
 extern int TowerRadius[];
 extern char TowerClass[][20];
 

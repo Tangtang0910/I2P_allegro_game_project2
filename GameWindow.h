@@ -49,18 +49,17 @@ public:
 
     // each process of scene
     void game_init();
-    void game_reset();
     void game_play();
     void game_begin();
 
     int game_run();
-    int game_update();
+    void game_update();
 
     void show_err_msg(int msg);
     void game_destroy();
 
     // each drawing scene function
-    void draw_running_map();
+    void game_draw();
 
     // process of updated event
     int process_event();
@@ -87,7 +86,6 @@ private:
 
     ALLEGRO_EVENT_QUEUE *event_queue = NULL;
     ALLEGRO_EVENT event;
-    ALLEGRO_TIMER *timer = NULL;
     ALLEGRO_TIMER *monster_pro = NULL;
 
     ALLEGRO_SAMPLE *sample = NULL;
@@ -108,7 +106,10 @@ private:
 
     bool redraw = false;
     bool mute = false;
+
+    int window = 0;
 };
 
 
 #endif // MAINWINDOW_H_INCLUDED
+
