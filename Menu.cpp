@@ -71,31 +71,7 @@ Menu::Reset()
 void
 Menu::Draw()
 {
-    char buffer[50];
-
-    sprintf(buffer, "%d", HealthPoint);
-    al_draw_bitmap(love, offsetX, 20, 0);
-    al_draw_text(menuFont, al_map_rgb(255, 255, 255), 2*al_get_bitmap_width(love) + offsetX, 20, 0, buffer);
-
-    sprintf(buffer, "Coin: %d", Coin);
-    al_draw_text(menuFont, al_map_rgb(255, 255, 255), offsetX, 20 + gapY, 0, buffer);
-
-    sprintf(buffer, "Score: %d", Score);
-    al_draw_text(menuFont, al_map_rgb(255, 255, 255), offsetX, 20 + 2*gapY, 0, buffer);
-
-    for(int i=0; i < Num_TowerType; i++)
-    {
-        int pos_x = offsetX + (ThumbWidth + gapX) * (i % 2);
-        int pos_y = offsetY + (ThumbHeight + gapY) * (i / 2);
-
-        al_draw_bitmap(menu_tower[i], pos_x, pos_y, 0);
-        if(!Enough_Coin(i))
-            al_draw_filled_rectangle(pos_x, pos_y, pos_x + ThumbWidth, pos_y + ThumbHeight, al_map_rgba(100, 100, 100, 100));
-        else if(i == selectedTower)
-            al_draw_rectangle(pos_x, pos_y, pos_x + ThumbWidth, pos_y + ThumbHeight, al_map_rgb(255, 0, 0), 0);
-        else
-            al_draw_rectangle(pos_x, pos_y, pos_x + ThumbWidth, pos_y + ThumbHeight, al_map_rgb(255, 255, 255), 0);
-    }
+    al_draw_rectangle(670, 1330, 1250, 1190, al_map_rgb(255, 0, 0), 3.0);
 }
 
 int

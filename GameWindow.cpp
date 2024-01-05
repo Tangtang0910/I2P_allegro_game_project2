@@ -31,7 +31,7 @@ GameWindow::game_init()
     char buffer[50];
 
     icon = al_load_bitmap("./icon.png");
-    background = al_load_bitmap("./StartBackground.jpg");
+    background = al_load_bitmap("./background/initial_room.png");
 
     for(int i = 0; i < Num_TowerType; i++)
     {
@@ -520,36 +520,11 @@ GameWindow::draw_running_map()
     unsigned int i, j;
 
     al_clear_to_color(al_map_rgb(100, 100, 100));
-    al_draw_bitmap(background, 0, 0, 0);
+    al_draw_scaled_bitmap(background, 0, 0, al_get_bitmap_width(background), al_get_bitmap_height(background), 0, 0, window_width, window_height, 0);
 
-    for(i = 0; i < field_height/40; i++)
-    {
-        for(j = 0; j < field_width/40; j++)
-        {
-            char buffer[50];
-            sprintf(buffer, "%d", i*15 + j);
-            if(level->isRoad(i*15 + j)) {
-                al_draw_filled_rectangle(j*40, i*40, j*40+40, i*40+40, al_map_rgb(255, 244, 173));
-            }
-            //al_draw_text(font, al_map_rgb(0, 0, 0), j*40, i*40, ALLEGRO_ALIGN_CENTER, buffer);
-        }
-    }
-    for(i=0; i<monsterSet.size(); i++)
-    {
-        monsterSet[i]->Draw();
-    }
-
-
-    for(std::list<Tower*>::iterator it = towerSet.begin(); it != towerSet.end(); it++)
-        (*it)->Draw();
-
-    if(selectedTower != -1)
-        Tower::SelectedTower(mouse_x, mouse_y, selectedTower);
-
-    al_draw_filled_rectangle(field_width, 0, window_width, window_height, al_map_rgb(100, 100, 100));
-
+    
     menu->Draw();
 
-    DC->get_Hero().Draw();
+
     al_flip_display();//把所有畫面呈現出來
 }
