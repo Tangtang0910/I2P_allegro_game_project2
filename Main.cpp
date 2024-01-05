@@ -4,7 +4,7 @@ int main(int argc, char *argv[])
 
     GameWindow *TowerGame= new GameWindow();
 
-    TowerGame->game_play();
+    TowerGame->game_establish();
 
     delete TowerGame;
     return 0;
