@@ -8,7 +8,7 @@ GameWindow::GameWindow() {
     display = al_create_display(window_width, window_height);
     event_queue = al_create_event_queue();
 
-    al_set_window_position(display, 100, 20); //螢幕出現位置
+    al_set_window_position(display, x_initial_position, y_initial_position);
     al_set_window_title(display, title);
 
     al_init_primitives_addon(); // initialize the primitives addon
@@ -108,9 +108,7 @@ void GameWindow::game_draw() {
     al_flip_display();//把所有畫面呈現出來
 }
 
-void
-GameWindow::game_destroy()
-{
+void GameWindow::game_destroy() {
     al_destroy_display(display);
     al_destroy_event_queue(event_queue);
 
