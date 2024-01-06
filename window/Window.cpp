@@ -20,10 +20,6 @@ void Window::set_background(string filename) {
     background = al_load_bitmap(filename.c_str());
 }
 
-ALLEGRO_BITMAP *Window::get_background() {
-    return background;
-}
-
 bool Window::mouse_click(int start_x, int start_y, int width, int height, ALLEGRO_EVENT event) {
     int mouse_x = event.mouse.x;
     int mouse_y = event.mouse.y;
@@ -34,9 +30,9 @@ bool Window::mouse_click(int start_x, int start_y, int width, int height, ALLEGR
 
 void Window::draw_background() {
     al_draw_scaled_bitmap(
-        get_background(), 0, 0, 
-        al_get_bitmap_width(get_background()), 
-        al_get_bitmap_height(get_background()), 
+        background, 0, 0, 
+        al_get_bitmap_width(background), 
+        al_get_bitmap_height(background), 
         0, 0, window_width, window_height, 0
     );
 }
