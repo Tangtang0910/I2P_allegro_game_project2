@@ -1,7 +1,6 @@
 #include "GameWindow.h"
 #include "global.h"
 #include <iostream>
-#include "Alchemy_room.h"
 
 GameWindow::GameWindow()
 {
@@ -31,12 +30,11 @@ GameWindow::GameWindow()
     al_reserve_samples(20);
     al_start_timer(fps);
 
-    icon = al_load_bitmap("./icon.png");
-    al_set_display_icon(display, icon);
     init_background = al_load_bitmap("./background/initial_room.png");
 
     menu = new Menu();
     dining_room = new Dining_room();
+    alchemy_room = new Alchemy_room();
 }
 
 int
@@ -84,6 +82,11 @@ GameWindow::process_event()
             dining_room->dining_room_destroy();
             window = 2;
         }
+    }else if(window == 2){
+        if(alchemy_room->alchemy_room_process(event)){cout << "hoho" << endl;
+            alchemy_room->alchemy_room_destroy();
+            window = 1;
+        }
     }
 
     // Check if the display close button was pressed
@@ -106,6 +109,9 @@ GameWindow::game_draw()
     }else if(window == 1){
         dining_room->dining_room_draw();
     }
+    else if(window == 2){
+        alchemy_room->alchemy_room_draw();
+    }
 
     al_flip_display();//把所有畫面呈現出來
 }
@@ -116,10 +122,9 @@ GameWindow::game_destroy()
     al_destroy_display(display);
     al_destroy_event_queue(event_queue);
 
-
-    al_destroy_bitmap(icon);
     al_destroy_bitmap(init_background);
 
     delete menu;
     delete dining_room;
+    delete alchemy_room;
 }

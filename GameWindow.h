@@ -9,6 +9,7 @@
 #include <time.h>
 #include "Menu.h"
 #include "Dining_room.h"
+#include "workshop.h"
 
 
 #define GAME_INIT -1
@@ -59,7 +60,7 @@ private:
 
     Menu *menu = NULL;
     Dining_room *dining_room = NULL;
-
+    Alchemy_room *alchemy_room = NULL;
     int window = 0;
     bool draw = false;
     const char *title = "煉朋友術師";

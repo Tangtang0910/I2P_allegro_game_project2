@@ -27,7 +27,7 @@ extern int TowerRadius[];
 extern char TowerClass[][20];
 
 //new created Element
-extern char ElementType[][3];
+extern char ElementType[][20];
 extern int ElementWidth[];
 extern int ElementHeight[];
 
