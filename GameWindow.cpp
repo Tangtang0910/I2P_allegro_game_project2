@@ -30,7 +30,7 @@ GameWindow::GameWindow()
     al_reserve_samples(20);
     al_start_timer(fps);
 
-    init_background = al_load_bitmap("./background/initial_room.png");
+    init_background = al_load_bitmap("./images/background/initial_room.png");
 
     menu = new Menu();
     dining_room = new Dining_room();
