@@ -2,6 +2,7 @@
 #define GLOBAL_H_INCLUDED
 
 #include <allegro5/allegro_font.h>
+#include <iostream>
 using namespace std;
 
 #define font_size 12

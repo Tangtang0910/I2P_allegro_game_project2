@@ -8,6 +8,7 @@
 #include <allegro5/allegro_ttf.h>
 #include <allegro5/allegro_primitives.h>
 #include "global.h"
+#include "utils.h"
 
 class Menu
 {
@@ -18,7 +19,7 @@ public:
     void menu_destroy();
 
 private:
-    
+    Utils *mouse_clicked;
 };
 
 #endif // MENU_H_INCLUDED

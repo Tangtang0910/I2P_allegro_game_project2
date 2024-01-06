@@ -38,16 +38,6 @@ GameWindow::GameWindow()
     
 }
 
-// bool
-// GameWindow::mouse_hover(int startx, int starty, int width, int height)
-// {
-//     if(mouse_x >= startx && mouse_x <= startx + width)
-//         if(mouse_y >= starty && mouse_y <= starty + height)
-//             return true;
-
-//     return false;
-// }
-
 int
 GameWindow::game_establish()
 {
@@ -91,6 +81,9 @@ GameWindow::process_event()
     ALLEGRO_EVENT event;
     al_wait_for_event(event_queue, &event);
     
+    if(window == 0){
+        menu->menu_process(event);
+    }
 
     // Check if the display close button was pressed
     if(event.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
