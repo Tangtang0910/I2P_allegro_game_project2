@@ -26,7 +26,7 @@ void Alchemy_room::Alchemy_init()
         sprintf(buffer, "./Element/%s.png", ElementType[i]);
         element[i] = al_load_bitmap(buffer);
     }
-    menu = new Menu();
+    menu = new Shelf_Menu();
 }
 
 bool
@@ -51,15 +51,14 @@ Alchemy_room::isOnPot()
     {
         startx = (i % 15) * 40;
         starty = (i / 15) * 40;
-        //level->isPot(i)
-        /*if(1) {
+        if(level->isPot(i)) {
             if((mouse_x + (widthOfElement/2) < startx) || (mouse_x - (widthOfElement/2) > startx + grid_width))
                 continue;
             else if((mouse_y + (widthOfElement/2) < starty) || (mouse_y > starty + grid_height))
                 continue;
             else
                 return true;
-        }*/
+        }
     }
     return false;
 }
@@ -124,7 +123,7 @@ Alchemy_room::Alchemy_room()
 {
     if (!al_init())
         Alchemy_err_msg(-1);
-    printf("Game Initializing...\n");
+    printf("moving to workshop...\n");
     display = al_create_display(window_width, window_height);
     event_queue = al_create_event_queue();
 

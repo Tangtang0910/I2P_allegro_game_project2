@@ -1,6 +1,7 @@
 #include "GameWindow.h"
 #include "global.h"
 #include <iostream>
+#include "Alchemy_room.h"
 
 GameWindow::GameWindow()
 {
@@ -70,7 +71,6 @@ GameWindow::game_run()
 void
 GameWindow::game_update()
 {
-    
 
 
 }
