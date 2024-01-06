@@ -1,8 +1,8 @@
 #include <iostream>
-#include "GameWindow.h"
+#include "GameController.h"
 #include "global.h"
 
-GameWindow::GameWindow() {
+GameController::GameController() {
     al_init();
 
     display = al_create_display(window_width, window_height);
@@ -36,7 +36,7 @@ GameWindow::GameWindow() {
     alchemy_room = new Alchemy_room();
 }
 
-void GameWindow::game_establish() {
+void GameController::game_establish() {
     GameState state = GAME_INIT;
     while (state != GAME_EXIT) {
         state = game_run();
@@ -44,7 +44,7 @@ void GameWindow::game_establish() {
     game_destroy();
 }
 
-GameState GameWindow::game_run() {
+GameState GameController::game_run() {
     GameState state = GAME_CONTINUE;
     if (draw) {
         game_draw();
@@ -56,7 +56,7 @@ GameState GameWindow::game_run() {
     return state;
 }
 
-GameState GameWindow::process_event() {
+GameState GameController::process_event() {
     ALLEGRO_EVENT event;
     al_wait_for_event(event_queue, &event);
     
@@ -87,7 +87,7 @@ GameState GameWindow::process_event() {
     return GAME_CONTINUE; 
 }
 
-void GameWindow::game_draw() {
+void GameController::game_draw() {
 
     if(window == 0){
         menu->menu_draw();
@@ -101,7 +101,7 @@ void GameWindow::game_draw() {
     al_flip_display(); //把所有畫面呈現出來
 }
 
-void GameWindow::game_destroy() {
+void GameController::game_destroy() {
     al_destroy_display(display);
     al_destroy_event_queue(event_queue);
 

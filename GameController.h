@@ -17,9 +17,9 @@ enum GameState {
     GAME_CONTINUE
 };
 
-class GameWindow {
+class GameController {
 public:
-    GameWindow();
+    GameController();
 
     GameState game_run();
     GameState process_event();
