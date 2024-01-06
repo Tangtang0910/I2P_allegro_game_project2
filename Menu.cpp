@@ -1,7 +1,7 @@
 #include "Menu.h"
 
 Menu::Menu() {
-    background = al_load_bitmap("./images/background/initial_room.png");
+    background = al_load_bitmap("./images/background/menu.png");
     mouse_clicked = new Utils;
 }
 
