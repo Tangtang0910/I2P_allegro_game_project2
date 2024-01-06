@@ -17,9 +17,6 @@ enum GameState {
     GAME_CONTINUE
 };
 
-// clock rate
-const float FPS = 60;
-
 class GameWindow {
 public:
     GameWindow();
@@ -32,8 +29,6 @@ public:
     void game_destroy();
 
 private:
-    ALLEGRO_BITMAP *icon;
-    ALLEGRO_BITMAP *init_background = NULL;
     ALLEGRO_DISPLAY* display = NULL;
     ALLEGRO_TIMER *fps = NULL;
 
@@ -43,6 +38,9 @@ private:
     int window = 0;
     bool draw = false;
     const char *title = "煉朋友術師";
+
+    // clock rate
+    const float FPS = 60;
 };
 
 #endif // MAINWINDOW_H_INCLUDED

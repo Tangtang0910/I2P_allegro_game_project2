@@ -10,8 +10,7 @@
 #include "global.h"
 #include "utils.h"
 
-class Menu
-{
+class Menu {
 public:
     Menu();
     bool menu_process(ALLEGRO_EVENT event);
@@ -19,6 +18,7 @@ public:
     void menu_destroy();
 
 private:
+    ALLEGRO_BITMAP *background = NULL;
     Utils *mouse_clicked;
 };
 

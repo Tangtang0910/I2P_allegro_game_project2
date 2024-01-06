@@ -31,7 +31,6 @@ GameWindow::GameWindow() {
     al_reserve_samples(20);
     al_start_timer(fps);
 
-    init_background = al_load_bitmap("./images/background/initial_room.png");
     menu = new Menu();
     dining_room = new Dining_room();
     alchemy_room = new Alchemy_room();
@@ -89,12 +88,6 @@ GameState GameWindow::process_event() {
 }
 
 void GameWindow::game_draw() {
-    al_draw_scaled_bitmap(
-        init_background, 0, 0, 
-        al_get_bitmap_width(init_background), 
-        al_get_bitmap_height(init_background), 
-        0, 0, window_width, window_height, 0
-    );
 
     if(window == 0){
         menu->menu_draw();
@@ -105,14 +98,12 @@ void GameWindow::game_draw() {
         alchemy_room->alchemy_room_draw();
     }
 
-    al_flip_display();//把所有畫面呈現出來
+    al_flip_display(); //把所有畫面呈現出來
 }
 
 void GameWindow::game_destroy() {
     al_destroy_display(display);
     al_destroy_event_queue(event_queue);
-
-    al_destroy_bitmap(init_background);
 
     delete menu;
     delete dining_room;
