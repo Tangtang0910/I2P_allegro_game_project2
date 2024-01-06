@@ -11,45 +11,24 @@
 #include "Dining_room.h"
 #include "workshop.h"
 
-
-#define GAME_INIT -1
-#define GAME_SETTING 0
-#define GAME_SELECT 1
-#define GAME_BEGIN 2
-#define GAME_CONTINUE 3
-#define GAME_FAIL 4
-#define GAME_TERMINATE 5
-#define GAME_NEXT_LEVEL 6
-#define GAME_EXIT 7
+enum GameState {
+    GAME_INIT,
+    GAME_EXIT,
+    GAME_CONTINUE
+};
 
 // clock rate
 const float FPS = 60;
 
-// total number of level
-const int LevelNum = 4;
-
-// 1 coin every 2 seconds
-const int CoinSpeed = FPS * 2;
-const int Coin_Time_Gain = 1;
-
-class GameWindow
-{
+class GameWindow {
 public:
-    // constructor
     GameWindow();
 
-    // each process of scene
-    int game_establish();
+    GameState game_run();
+    GameState process_event();
 
-    int game_run();
-
-    // each drawing scene function
+    void game_establish();
     void game_draw();
-
-    // process of updated event
-    int process_event();
-    // detect if mouse hovers over a rectangle
-    //bool mouse_hover(int, int, int, int);
     void game_destroy();
 
 private:
@@ -66,6 +45,4 @@ private:
     const char *title = "煉朋友術師";
 };
 
-
 #endif // MAINWINDOW_H_INCLUDED
-
