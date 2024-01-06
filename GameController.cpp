@@ -32,8 +32,6 @@ GameController::GameController() {
     al_start_timer(fps);
 
     menu = new Menu();
-    dining_room = new Dining_room();
-    alchemy_room = new Alchemy_room();
 }
 
 void GameController::game_establish() {
@@ -62,18 +60,8 @@ GameState GameController::process_event() {
     
     if (window == 0) {
         if (menu->menu_process(event)) {
-            menu->menu_destroy();
-            window = 1;
-        }
-    } else if (window == 1) {
-        if(dining_room->dining_room_process(event)) {
-            dining_room->dining_room_destroy();
-            window = 2;
-        }
-    } else if (window == 2) {
-        if (alchemy_room->alchemy_room_process(event)) {
-            alchemy_room->alchemy_room_destroy();
-            window = 1;
+            //menu->menu_destroy();
+            cout << "123" << endl;
         }
     }
 
@@ -92,13 +80,9 @@ void GameController::game_draw() {
 
     if (window == 0) {
         menu->menu_draw();
-    } else if (window == 1) {
-        dining_room->dining_room_draw();
-    } else if (window == 2) {
-        alchemy_room->alchemy_room_draw();
     }
 
-    al_flip_display(); //把所有畫面呈現出來
+    al_flip_display();
 }
 
 void GameController::game_destroy() {
@@ -106,6 +90,4 @@ void GameController::game_destroy() {
     al_destroy_event_queue(event_queue);
 
     delete menu;
-    delete dining_room;
-    delete alchemy_room;
 }

@@ -7,8 +7,8 @@
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
 #include <allegro5/allegro_primitives.h>
-#include "global.h"
-#include "utils.h"
+#include "../global.h"
+#include "../utils.h"
 
 class Menu {
 public:
@@ -19,7 +19,6 @@ public:
 
 private:
     ALLEGRO_BITMAP *background = NULL;
-    Utils *mouse_clicked;
 };
 
 #endif // MENU_H_INCLUDED

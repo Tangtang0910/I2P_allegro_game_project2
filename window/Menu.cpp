@@ -2,11 +2,10 @@
 
 Menu::Menu() {
     background = al_load_bitmap("./images/background/menu.png");
-    mouse_clicked = new Utils;
 }
 
 bool Menu::menu_process(ALLEGRO_EVENT event){
-    if(mouse_clicked->mouse_click(670, 1190, 580, 140, event)){
+    if(mouse_click(670, 1190, 580, 140, event)){
         return true;
     }else{
         return false;
@@ -24,5 +23,4 @@ void Menu::menu_draw() {
 
 void Menu::menu_destroy(){
     al_destroy_bitmap(background);
-    delete mouse_clicked;
 }

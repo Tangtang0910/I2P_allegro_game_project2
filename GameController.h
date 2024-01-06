@@ -7,9 +7,7 @@
 #include <vector>
 #include <list>
 #include <time.h>
-#include "Menu.h"
-#include "Dining_room.h"
-#include "workshop.h"
+#include "window/Menu.h"
 
 enum GameState {
     GAME_INIT,
@@ -36,8 +34,6 @@ private:
     const float FPS = 60;
 
     Menu *menu = NULL;
-    Dining_room *dining_room = NULL;
-    Alchemy_room *alchemy_room = NULL;
     int window = 0;
     bool draw = false;
 };
