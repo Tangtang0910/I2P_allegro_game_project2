@@ -30,12 +30,19 @@ GameController::GameController() {
     al_start_timer(fps);
 
     menu = new Menu();
+    dining_room = new DiningRoom();
+    workshop = new Workshop();
+
+    current_window = menu;
 }
 
 GameController::~GameController() {
     al_destroy_display(display);
     al_destroy_event_queue(event_queue);
+
     delete menu;
+    delete dining_room;
+    delete workshop;
 }
 
 void GameController::game_establish() {
@@ -61,10 +68,17 @@ GameState GameController::process_event() {
     ALLEGRO_EVENT event;
     al_wait_for_event(event_queue, &event);
     
-    if (window == 0) {
-        if (menu->process(event)) {
-            //menu->menu_destroy();
-            cout << "123" << endl;
+    if (current_window == menu) {
+        if (current_window->process(event)) {
+            current_window = dining_room;
+        }
+    } else if (current_window == dining_room) {
+        if (current_window->process(event)) {
+            current_window = workshop;
+        }
+    } else if (current_window == workshop) {
+        if (current_window->process(event)) {
+            current_window = dining_room;
         }
     }
 
@@ -80,10 +94,6 @@ GameState GameController::process_event() {
 }
 
 void GameController::game_draw() {
-
-    if (window == 0) {
-        menu->draw();
-    }
-
+    current_window->draw();
     al_flip_display();
 }

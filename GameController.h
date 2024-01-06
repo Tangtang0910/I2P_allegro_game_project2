@@ -5,6 +5,7 @@
 #include "window/Window.h"
 #include "window/Menu.h"
 #include "window/DiningRoom.h"
+#include "window/Workshop.h"
 
 enum GameState {
     GAME_INIT,
@@ -33,7 +34,9 @@ private:
 
     Window *current_window = NULL;
     Window *menu = NULL;
-    vector<Window *> windows;
+    Window *dining_room = NULL;
+    Window *workshop = NULL;
+
     int window = 0;
     bool draw = false;
 };

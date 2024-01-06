@@ -4,8 +4,8 @@ ALLEGRO_LIBRARIES := allegro-5 allegro_image-5 allegro_font-5 allegro_ttf-5 alle
 ALLEGRO_FLAGS := $(shell pkg-config --cflags --libs $(ALLEGRO_LIBRARIES)) -lallegro -lallegro_main
 
 OUT:= game
-SOURCE = main.cpp global.cpp GameController.cpp window/Window.cpp window/Menu.cpp window/DiningRoom.cpp
-OBJ = main.o global.o GameController.o Window.o Menu.o DiningRoom.o
+SOURCE = main.cpp global.cpp GameController.cpp window/Window.cpp window/Menu.cpp window/DiningRoom.cpp window/Workshop.cpp
+OBJ = main.o global.o GameController.o Window.o Menu.o DiningRoom.o Workshop.o
 all: 
 	$(CC) -c -g $(CFLAGS) $(SOURCE) $(ALLEGRO_FLAGS)
 	$(CC) $(CFLAGS) -o $(OUT) $(OBJ) $(ALLEGRO_FLAGS)
