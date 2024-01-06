@@ -2,14 +2,23 @@
 #define WINDOW_H_INCLUDED
 
 #include "../global.h"
-#include "../utils.h"
 
 class Window {
 public:
     Window();
+    ~Window();
+
     virtual bool process(ALLEGRO_EVENT event);
     virtual void draw();
-    virtual void destroy();
+
+    void set_background(string filename);
+    ALLEGRO_BITMAP *get_background();
+
+    bool mouse_click(int startx, int starty, int width, int height, ALLEGRO_EVENT event);
+    void draw_background();
+
+private:
+    ALLEGRO_BITMAP *background = NULL;
 };
 
 #endif

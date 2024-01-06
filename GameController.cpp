@@ -32,12 +32,17 @@ GameController::GameController() {
     menu = new Menu();
 }
 
+GameController::~GameController() {
+    al_destroy_display(display);
+    al_destroy_event_queue(event_queue);
+    delete menu;
+}
+
 void GameController::game_establish() {
     GameState state = GAME_INIT;
     while (state != GAME_EXIT) {
         state = game_run();
     }
-    game_destroy();
 }
 
 GameState GameController::game_run() {
@@ -81,12 +86,4 @@ void GameController::game_draw() {
     }
 
     al_flip_display();
-}
-
-void GameController::game_destroy() {
-    al_destroy_display(display);
-    al_destroy_event_queue(event_queue);
-
-    menu->destroy();
-    delete menu;
 }

@@ -6,12 +6,9 @@
 class Menu : public Window {
 public:
     Menu();
+    ~Menu();
     bool process(ALLEGRO_EVENT event) override;
     void draw() override;
-    void destroy() override;
-
-private:
-    ALLEGRO_BITMAP *background = NULL;
 };
 
 #endif

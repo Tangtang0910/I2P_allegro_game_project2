@@ -1,7 +1,11 @@
 #include "Menu.h"
 
 Menu::Menu() {
-    background = al_load_bitmap("./images/background/menu.png");
+    set_background("./images/background/menu.png");
+}
+
+Menu::~Menu() {
+
 }
 
 bool Menu::process(ALLEGRO_EVENT event){
@@ -9,14 +13,5 @@ bool Menu::process(ALLEGRO_EVENT event){
 }
 
 void Menu::draw() {
-    al_draw_scaled_bitmap(
-        background, 0, 0, 
-        al_get_bitmap_width(background), 
-        al_get_bitmap_height(background), 
-        0, 0, window_width, window_height, 0
-    );
-}
-
-void Menu::destroy(){
-    al_destroy_bitmap(background);
+    draw_background();
 }
