@@ -2,7 +2,7 @@
 
 Menu::Menu()
 {
-    
+
 }
 
 void

@@ -18,7 +18,6 @@ public:
     void menu_destroy();
 
 private:
-    
 };
 
 #endif // MENU_H_INCLUDED

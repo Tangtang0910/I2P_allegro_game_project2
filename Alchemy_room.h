@@ -6,9 +6,9 @@
 #include <vector>
 #include <list>
 #include <time.h>
-#include "Menu.h"
 #include "element.h"
 #include "DataCenter.h"
+#include "shelf_menu.h"
 
 #define GAME_INIT -1
 #define GAME_SETTING 0
@@ -64,7 +64,7 @@ private:
     ALLEGRO_EVENT event;
     ALLEGRO_TIMER *timer = NULL;
 
-    Menu *menu = NULL;
+    Shelf_Menu *menu = NULL;
 
     std::list<Element*> &ElementSet = DC->get_Element();
 
