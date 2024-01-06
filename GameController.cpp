@@ -29,17 +29,25 @@ GameController::GameController() {
     al_reserve_samples(20);
     al_start_timer(fps);
 
+    icon = al_load_bitmap("./images/item/icon.png");
+    al_set_display_icon(display, icon);
+
+    song = al_load_sample("./sound/background_music.wav");
+    al_play_sample(song, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_LOOP, NULL);
+
     menu = new Menu();
     dining_room = new DiningRoom();
     workshop = new Workshop();
 
-    current_window = menu;
+    current_window = workshop;
 }
 
 GameController::~GameController() {
     al_destroy_display(display);
     al_destroy_event_queue(event_queue);
-
+    al_destroy_bitmap(icon);
+    al_destroy_sample(song);
+    
     delete menu;
     delete dining_room;
     delete workshop;

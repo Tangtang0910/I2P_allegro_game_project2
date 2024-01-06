@@ -26,8 +26,11 @@ public:
     void game_draw();
 
 private:
+    ALLEGRO_BITMAP *icon;
+
     ALLEGRO_DISPLAY* display = NULL;
     ALLEGRO_TIMER *fps = NULL;
+    ALLEGRO_SAMPLE *song = NULL;
 
     const char *title = "煉朋友術師";
     const float FPS = 60;
@@ -37,7 +40,6 @@ private:
     Window *dining_room = NULL;
     Window *workshop = NULL;
 
-    int window = 0;
     bool draw = false;
 };
 

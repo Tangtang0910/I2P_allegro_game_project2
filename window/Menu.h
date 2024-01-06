@@ -9,6 +9,9 @@ public:
     ~Menu();
     bool process(ALLEGRO_EVENT event) override;
     void draw() override;
+
+private:
+    ALLEGRO_SAMPLE *sound_effect = NULL;
 };
 
 #endif
