@@ -33,10 +33,10 @@ GameWindow::GameWindow()
 
     icon = al_load_bitmap("./icon.png");
     al_set_display_icon(display, icon);
-    background = al_load_bitmap("./background/initial_room.png");
+    init_background = al_load_bitmap("./background/initial_room.png");
 
     menu = new Menu();
-    
+    dining_room = new Dining_room();
 }
 
 int
@@ -68,13 +68,6 @@ GameWindow::game_run()
     return error;
 }
 
-void
-GameWindow::game_update()
-{
-
-
-}
-
 int
 GameWindow::process_event()
 {
@@ -82,7 +75,15 @@ GameWindow::process_event()
     al_wait_for_event(event_queue, &event);
     
     if(window == 0){
-        menu->menu_process(event);
+        if(menu->menu_process(event)){
+            menu->menu_destroy();
+            window = 1;
+        }
+    }else if(window == 1){
+        if(dining_room->dining_room_process(event)){cout << "hihi" << endl;
+            dining_room->dining_room_destroy();
+            window = 2;
+        }
     }
 
     // Check if the display close button was pressed
@@ -92,18 +93,18 @@ GameWindow::process_event()
     else if(event.type == ALLEGRO_EVENT_TIMER)
         if(event.timer.source == fps)
             draw = true;
-    if(draw) game_update();
-
     return 0; 
 }
 
 void
 GameWindow::game_draw()
 {
-    al_draw_scaled_bitmap(background, 0, 0, al_get_bitmap_width(background), al_get_bitmap_height(background), 0, 0, window_width, window_height, 0);
+    al_draw_scaled_bitmap(init_background, 0, 0, al_get_bitmap_width(init_background), al_get_bitmap_height(init_background), 0, 0, window_width, window_height, 0);
 
     if(window == 0){
         menu->menu_draw();
+    }else if(window == 1){
+        dining_room->dining_room_draw();
     }
 
     al_flip_display();//把所有畫面呈現出來
@@ -117,7 +118,8 @@ GameWindow::game_destroy()
 
 
     al_destroy_bitmap(icon);
-    al_destroy_bitmap(background);
+    al_destroy_bitmap(init_background);
 
     delete menu;
+    delete dining_room;
 }

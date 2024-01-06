@@ -14,7 +14,7 @@ class Menu
 {
 public:
     Menu();
-    void menu_process(ALLEGRO_EVENT event);
+    bool menu_process(ALLEGRO_EVENT event);
     void menu_draw();
     void menu_destroy();
 

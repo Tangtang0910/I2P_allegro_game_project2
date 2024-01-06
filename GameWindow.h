@@ -8,6 +8,7 @@
 #include <list>
 #include <time.h>
 #include "Menu.h"
+#include "Dining_room.h"
 
 
 #define GAME_INIT -1
@@ -40,7 +41,6 @@ public:
     int game_establish();
 
     int game_run();
-    void game_update();
 
     // each drawing scene function
     void game_draw();
@@ -53,11 +53,12 @@ public:
 
 private:
     ALLEGRO_BITMAP *icon;
-    ALLEGRO_BITMAP *background = NULL;
+    ALLEGRO_BITMAP *init_background = NULL;
     ALLEGRO_DISPLAY* display = NULL;
     ALLEGRO_TIMER *fps = NULL;
 
     Menu *menu = NULL;
+    Dining_room *dining_room = NULL;
 
     int window = 0;
     bool draw = false;
