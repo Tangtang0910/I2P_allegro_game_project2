@@ -4,15 +4,11 @@ Menu::Menu() {
     background = al_load_bitmap("./images/background/menu.png");
 }
 
-bool Menu::menu_process(ALLEGRO_EVENT event){
-    if(mouse_click(670, 1190, 580, 140, event)){
-        return true;
-    }else{
-        return false;
-    }
+bool Menu::process(ALLEGRO_EVENT event){
+    return mouse_click(670, 1190, 580, 140, event);
 }
 
-void Menu::menu_draw() {
+void Menu::draw() {
     al_draw_scaled_bitmap(
         background, 0, 0, 
         al_get_bitmap_width(background), 
@@ -21,6 +17,6 @@ void Menu::menu_draw() {
     );
 }
 
-void Menu::menu_destroy(){
+void Menu::destroy(){
     al_destroy_bitmap(background);
 }

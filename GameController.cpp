@@ -1,6 +1,4 @@
-#include <iostream>
 #include "GameController.h"
-#include "global.h"
 
 GameController::GameController() {
     al_init();
@@ -59,7 +57,7 @@ GameState GameController::process_event() {
     al_wait_for_event(event_queue, &event);
     
     if (window == 0) {
-        if (menu->menu_process(event)) {
+        if (menu->process(event)) {
             //menu->menu_destroy();
             cout << "123" << endl;
         }
@@ -79,7 +77,7 @@ GameState GameController::process_event() {
 void GameController::game_draw() {
 
     if (window == 0) {
-        menu->menu_draw();
+        menu->draw();
     }
 
     al_flip_display();
@@ -89,5 +87,6 @@ void GameController::game_destroy() {
     al_destroy_display(display);
     al_destroy_event_queue(event_queue);
 
+    menu->destroy();
     delete menu;
 }

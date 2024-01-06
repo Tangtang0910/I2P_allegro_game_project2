@@ -1,12 +1,8 @@
-#ifndef MAINWINDOW_H_INCLUDED
-#define MAINWINDOW_H_INCLUDED
+#ifndef GAMECONTROLLER_H_INCLUDED
+#define GAMECONTROLLER_H_INCLUDED
 
-#include <allegro5/allegro_audio.h>
-#include <allegro5/allegro_acodec.h>
-#include <allegro5/allegro_image.h>
-#include <vector>
-#include <list>
-#include <time.h>
+#include "global.h"
+#include "window/Window.h"
 #include "window/Menu.h"
 
 enum GameState {
@@ -33,9 +29,9 @@ private:
     const char *title = "煉朋友術師";
     const float FPS = 60;
 
-    Menu *menu = NULL;
+    Window *menu = NULL;
     int window = 0;
     bool draw = false;
 };
 
-#endif // MAINWINDOW_H_INCLUDED
+#endif
