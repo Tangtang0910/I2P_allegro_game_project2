@@ -60,41 +60,41 @@ GameState GameController::process_event() {
     ALLEGRO_EVENT event;
     al_wait_for_event(event_queue, &event);
     
-    if(window == 0){
-        if(menu->menu_process(event)){
+    if (window == 0) {
+        if (menu->menu_process(event)) {
             menu->menu_destroy();
             window = 1;
         }
-    }else if(window == 1){
-        if(dining_room->dining_room_process(event)){cout << "hihi" << endl;
+    } else if (window == 1) {
+        if(dining_room->dining_room_process(event)) {
             dining_room->dining_room_destroy();
             window = 2;
         }
-    }else if(window == 2){
-        if(alchemy_room->alchemy_room_process(event)){cout << "hoho" << endl;
+    } else if (window == 2) {
+        if (alchemy_room->alchemy_room_process(event)) {
             alchemy_room->alchemy_room_destroy();
             window = 1;
         }
     }
 
     // Check if the display close button was pressed
-    if(event.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
+    if (event.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
         return GAME_EXIT; // This will cause the game loop to exit
-    }
-    else if(event.type == ALLEGRO_EVENT_TIMER)
-        if(event.timer.source == fps)
+    } else if (event.type == ALLEGRO_EVENT_TIMER) {
+        if (event.timer.source == fps) {
             draw = true;
+        }
+    }
     return GAME_CONTINUE; 
 }
 
 void GameController::game_draw() {
 
-    if(window == 0){
+    if (window == 0) {
         menu->menu_draw();
-    }else if(window == 1){
+    } else if (window == 1) {
         dining_room->dining_room_draw();
-    }
-    else if(window == 2){
+    } else if (window == 2) {
         alchemy_room->alchemy_room_draw();
     }
 

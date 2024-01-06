@@ -32,15 +32,14 @@ private:
     ALLEGRO_DISPLAY* display = NULL;
     ALLEGRO_TIMER *fps = NULL;
 
+    const char *title = "煉朋友術師";
+    const float FPS = 60;
+
     Menu *menu = NULL;
     Dining_room *dining_room = NULL;
     Alchemy_room *alchemy_room = NULL;
     int window = 0;
     bool draw = false;
-    const char *title = "煉朋友術師";
-
-    // clock rate
-    const float FPS = 60;
 };
 
 #endif // MAINWINDOW_H_INCLUDED
