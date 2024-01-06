@@ -124,7 +124,7 @@ Alchemy_room::Alchemy_room()
 {
     if (!al_init())
         Alchemy_err_msg(-1);
-    printf("Game Initializing...\n");
+    printf("moving to workshop...\n");
     display = al_create_display(window_width, window_height);
     event_queue = al_create_event_queue();
 

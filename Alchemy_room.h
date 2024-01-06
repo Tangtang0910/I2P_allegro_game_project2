@@ -8,7 +8,7 @@
 #include <time.h>
 #include "Menu.h"
 #include "element.h"
-
+#include "DataCenter.h"
 
 #define GAME_INIT -1
 #define GAME_SETTING 0
@@ -46,7 +46,7 @@ public:
     // detect if mouse hovers over a rectangle
     bool mouse_hover(int, int, int, int);
     bool isOnPot();
-//改成elements
+
     Element* create_element(int);
     void Alchemy_init();
 
