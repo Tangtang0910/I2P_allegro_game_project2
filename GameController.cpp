@@ -39,7 +39,7 @@ GameController::GameController() {
     dining_room = new DiningRoom();
     workshop = new Workshop();
 
-    current_window = workshop;
+    current_window = menu;
 }
 
 GameController::~GameController() {

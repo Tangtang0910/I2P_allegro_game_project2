@@ -12,9 +12,16 @@ public:
 
 private:
     ALLEGRO_SAMPLE *button_sound_effect = NULL;
-    ALLEGRO_SAMPLE *carrot_sound_effect = NULL;
-    ALLEGRO_SAMPLE *bottle_sound_effect = NULL;
-    ALLEGRO_SAMPLE *crystal_sound_effect = NULL;
+    ALLEGRO_SAMPLE *grass_sound_effect = NULL;
+    ALLEGRO_SAMPLE *potion_sound_effect = NULL;
+    ALLEGRO_SAMPLE *mineral_sound_effect = NULL;
+
+    ALLEGRO_BITMAP *pot = NULL;
+    ALLEGRO_BITMAP *grass = NULL;
+    ALLEGRO_BITMAP *mineral = NULL;
+    ALLEGRO_BITMAP *potion = NULL;
+
+    
 };
 
 #endif

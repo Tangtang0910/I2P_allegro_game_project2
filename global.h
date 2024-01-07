@@ -21,7 +21,4 @@ using namespace std;
 #define x_initial_position 200
 #define y_initial_position 80
 
-extern ALLEGRO_EVENT_QUEUE *event_queue;
-extern bool key_state[ALLEGRO_KEY_MAX];
-
 #endif // GLOBAL_H_INCLUDED

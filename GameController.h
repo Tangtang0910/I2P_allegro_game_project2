@@ -28,6 +28,7 @@ public:
 private:
     ALLEGRO_BITMAP *icon;
 
+    ALLEGRO_EVENT_QUEUE *event_queue = NULL;
     ALLEGRO_DISPLAY* display = NULL;
     ALLEGRO_TIMER *fps = NULL;
     ALLEGRO_SAMPLE *song = NULL;

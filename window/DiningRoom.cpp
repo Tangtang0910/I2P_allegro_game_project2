@@ -51,6 +51,7 @@ bool DiningRoom::process(ALLEGRO_EVENT event) {
         } else if (mouse_click(1110, 1245, 251, 185, event)) { // 按 trash --> 朋友消失
             al_play_sample(trash_button, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
             fav = -1;
+ 
         }
 
         if(al_get_time() - last_action_time > 3.0) { // 每五秒減一個愛心
