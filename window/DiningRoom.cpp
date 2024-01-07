@@ -98,8 +98,9 @@ void DiningRoom::draw() {
 
     }
     
-    if (current_video != NULL && current_frame < current_video->size()) {
-        al_draw_bitmap((*current_video)[current_frame], 800, 750, 0);
+    if (current_video != NULL && current_frame < current_video->size() / video_speed + video_stay_frame) {
+        int index = min((int) (current_frame * video_speed), (int) (current_video->size() - 1));
+        al_draw_bitmap((*current_video)[index], 800, 750, 0);
         current_frame += 1;
     }
 }
