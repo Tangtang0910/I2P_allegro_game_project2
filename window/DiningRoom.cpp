@@ -71,9 +71,6 @@ Action DiningRoom::process(ALLEGRO_EVENT event) {
             return RESET_WORKSHOP;
         }
     }
-    
-
-    
 
     return DO_NOTHING;
 }
@@ -99,6 +96,11 @@ void DiningRoom::draw() {
     } else if (character == MAGICAL_GIRL) {
 
     }
+
+    //if (video_frame < total_frame) {
+    //    draw_video(video_frame);
+    //    video_frame += 1;
+    //}
 }
 
 // void DiningRoom::play_action(string button) {
