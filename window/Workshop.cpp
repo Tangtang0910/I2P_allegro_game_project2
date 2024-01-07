@@ -38,5 +38,5 @@ bool Workshop::process(ALLEGRO_EVENT event) {
 
 void Workshop::draw(){
     draw_background();
-    
+    draw_materail();
 }
