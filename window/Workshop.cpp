@@ -25,10 +25,10 @@ bool Workshop::process(ALLEGRO_EVENT event) {
     if (mouse_click(100, 1100, 300, 250, event)) { // 按下蘿蔔
         al_play_sample(carrot_sound_effect, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
         
-    } else if (mouse_click(1280, 630, 170, 150, event)) { // 按下玻璃瓶
+    } else if (mouse_click(1280, 430, 170, 150, event)) { // 按下玻璃瓶
         al_play_sample(bottle_sound_effect, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
         
-    } else if (mouse_click(1520, 730, 230, 270, event)) { // 按下水晶
+    } else if (mouse_click(1520, 530, 230, 270, event)) { // 按下水晶
         al_play_sample(crystal_sound_effect, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
         
     }
@@ -38,5 +38,5 @@ bool Workshop::process(ALLEGRO_EVENT event) {
 
 void Workshop::draw(){
     draw_background();
-
+    
 }
