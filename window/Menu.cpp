@@ -10,12 +10,12 @@ Menu::~Menu() {
     al_destroy_sample(sound_effect);
 }
 
-bool Menu::process(ALLEGRO_EVENT event) {
+Action Menu::process(ALLEGRO_EVENT event) {
     if(mouse_click(670, 1190, 580, 140, event)) {
         al_play_sample(sound_effect, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
-        return true;
+        return NEXT_WINDOW;
     }
-    return false;
+    return DO_NOTHING;
 }
 
 void Menu::draw() {

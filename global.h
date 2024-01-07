@@ -21,4 +21,20 @@ using namespace std;
 #define x_initial_position 200
 #define y_initial_position 80
 
+enum Action {
+    DO_NOTHING,
+    NEXT_WINDOW,
+    RESET_WORKSHOP,
+    CREATE_TOOL_MAN,
+    CREATE_BEAST_MAN,
+    CREATE_MAGICAL_GIRL
+};
+
+enum Character {
+    TOOL_MAN, //工具人
+    BEAST_MAN, //獸人
+    MAGICAL_GIRL,
+    NO_ONE
+};
+
 #endif // GLOBAL_H_INCLUDED

@@ -76,17 +76,26 @@ GameState GameController::process_event() {
     ALLEGRO_EVENT event;
     al_wait_for_event(event_queue, &event);
     
+    Action action = current_window->process(event);
     if (current_window == menu) {
-        if (current_window->process(event)) {
+        if (action == NEXT_WINDOW) {
             current_window = dining_room;
         }
     } else if (current_window == dining_room) {
-        if (current_window->process(event)) {
+        if (action == NEXT_WINDOW) {
             current_window = workshop;
+        } else if (action == RESET_WORKSHOP) {
+            ((Workshop *)workshop)->reset();
         }
     } else if (current_window == workshop) {
-        if (current_window->process(event)) {
+        if (action == NEXT_WINDOW) {
             current_window = dining_room;
+        } else if (action == CREATE_TOOL_MAN) {
+            ((DiningRoom *)dining_room)->set_character(TOOL_MAN);
+        } else if (action == CREATE_BEAST_MAN) {
+            ((DiningRoom *)dining_room)->set_character(BEAST_MAN);
+        } else if (action == CREATE_MAGICAL_GIRL) {
+            ((DiningRoom *)dining_room)->set_character(MAGICAL_GIRL);
         }
     }
 
@@ -97,7 +106,7 @@ GameState GameController::process_event() {
         if (event.timer.source == fps) {
             draw = true;
         }
-    }
+    } 
     return GAME_CONTINUE; 
 }
 

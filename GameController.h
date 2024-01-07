@@ -17,7 +17,6 @@ class GameController {
 public:
     GameController();
     ~GameController();
-    void window_init();
 
     GameState game_run();
     GameState process_event();

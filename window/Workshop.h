@@ -7,8 +7,11 @@ class Workshop : public Window {
 public:
     Workshop();
     ~Workshop();
-    bool process(ALLEGRO_EVENT event) override;
+    Action process(ALLEGRO_EVENT event) override;
     void draw() override;
+
+    void play_sound(string material);
+    void reset();
 
 private:
     ALLEGRO_SAMPLE *button_sound_effect = NULL;
@@ -21,7 +24,11 @@ private:
     ALLEGRO_BITMAP *mineral = NULL;
     ALLEGRO_BITMAP *potion = NULL;
 
-    
+    bool grass_clicked = false;
+    bool mineral_clicked = false;
+    bool potion_clicked = false;
+
+    vector<string> material_vec; //紀錄選了哪兩個材料
 };
 
 #endif

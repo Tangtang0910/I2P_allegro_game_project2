@@ -8,8 +8,8 @@ Window::~Window() {
     al_destroy_bitmap(background);
 }
 
-bool Window::process(ALLEGRO_EVENT event) {
-    return true;
+Action Window::process(ALLEGRO_EVENT event) {
+    return DO_NOTHING;
 }
 
 void Window::draw() {

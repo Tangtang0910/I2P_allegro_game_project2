@@ -7,7 +7,7 @@ class Menu : public Window {
 public:
     Menu();
     ~Menu();
-    bool process(ALLEGRO_EVENT event) override;
+    Action process(ALLEGRO_EVENT event) override;
     void draw() override;
 
 private:
