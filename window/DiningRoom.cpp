@@ -15,6 +15,7 @@ DiningRoom::DiningRoom() {
     fav = 6;
 
     tool_man = al_load_bitmap("./images/character/tool_man.png");
+    tool_man_talk1_frames = read_video("./images/talk/tool_man/talk1/talk1_", 49);
 }
 
 DiningRoom::~DiningRoom() {
@@ -39,7 +40,7 @@ Action DiningRoom::process(ALLEGRO_EVENT event) {
     
             if(mouse_click(108, 1245, 257, 185, event)){ // 按 chat
                 play_sound("react");
-
+                play_action("chat");
                 fav++;
                 last_action_time = al_get_time();
 
@@ -96,40 +97,41 @@ void DiningRoom::draw() {
     } else if (character == MAGICAL_GIRL) {
 
     }
-
-    //if (video_frame < total_frame) {
-    //    draw_video(video_frame);
-    //    video_frame += 1;
-    //}
+    
+    if (current_video != NULL && current_frame < current_video->size()) {
+        al_draw_bitmap((*current_video)[current_frame], 800, 750, 0);
+        current_frame += 1;
+    }
 }
 
-// void DiningRoom::play_action(string button) {
-//     if (button == "chat") {
-//         if (character == TOOL_MAN) {
-
-//         } else if (character == BEAST_MAN) {
-
-//         } else if (character == MAGICAL_GIRL) {
-
-//         }
-//     } else if (button == "feed") {
-//         if (character == TOOL_MAN) {
-
-//         } else if (character == BEAST_MAN) {
-
-//         } else if (character == MAGICAL_GIRL) {
+void DiningRoom::play_action(string button) {
+    if (button == "chat") {
+        if (character == TOOL_MAN) {
+            current_video = &tool_man_talk1_frames;
+        } else if (character == BEAST_MAN) {
             
-//         }
-//     } else if (button == "pet") {
-//         if (character == TOOL_MAN) {
+        } else if (character == MAGICAL_GIRL) {
 
-//         } else if (character == BEAST_MAN) {
+        }
+    } else if (button == "feed") {
+        if (character == TOOL_MAN) {
 
-//         } else if (character == MAGICAL_GIRL) {
+        } else if (character == BEAST_MAN) {
+
+        } else if (character == MAGICAL_GIRL) {
             
-//         }
-//     }
-// }
+        }
+    } else if (button == "pet") {
+        if (character == TOOL_MAN) {
+
+        } else if (character == BEAST_MAN) {
+
+        } else if (character == MAGICAL_GIRL) {
+            
+        }
+    }
+    current_frame = 0;
+}
 
 void DiningRoom::play_sound(string button){
     if (button == "react") al_play_sample(react_button, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);

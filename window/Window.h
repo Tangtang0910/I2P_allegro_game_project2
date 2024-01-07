@@ -13,6 +13,7 @@ public:
 
     void set_background(string filename);
     void draw_background();
+    vector<ALLEGRO_BITMAP *> read_video(string prefix, int length);
 
     bool mouse_click(int startx, int starty, int width, int height, ALLEGRO_EVENT event);
 

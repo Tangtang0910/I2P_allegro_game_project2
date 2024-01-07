@@ -10,7 +10,7 @@ public:
     Action process(ALLEGRO_EVENT event) override;
     void draw() override;
 
-    // void play_action(string button);
+    void play_action(string button);
     void play_sound(string button);
     void set_character(Character character);
 
@@ -24,12 +24,16 @@ private:
     ALLEGRO_BITMAP *beast_man = NULL;
     ALLEGRO_BITMAP *magical_girl= NULL;
 
+    vector<ALLEGRO_BITMAP *> *current_video = NULL;
+    vector<ALLEGRO_BITMAP *> tool_man_talk1_frames;
+
     ALLEGRO_SAMPLE *react_button = NULL;
     ALLEGRO_SAMPLE *trash_button = NULL;
     ALLEGRO_SAMPLE *home_button = NULL;
 
     double last_action_time;
     int fav;
+    int current_frame = INT_MAX;
 
     Character character = NO_ONE;
 };

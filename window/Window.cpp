@@ -28,6 +28,17 @@ void Window::draw_background() {
     );
 }
 
+vector<ALLEGRO_BITMAP *> Window::read_video(string prefix, int length) {
+    vector<ALLEGRO_BITMAP *> frames(length, NULL);
+    for (int i = 0; i < length; i++) {
+        ostringstream stream;
+        stream << setw(5) << setfill('0') << i;
+        string filename = prefix + stream.str() + ".png";
+        frames[i] = al_load_bitmap(filename.c_str());
+    }
+    return frames;
+}
+
 bool Window::mouse_click(int start_x, int start_y, int width, int height, ALLEGRO_EVENT event) {
     int mouse_x = event.mouse.x;
     int mouse_y = event.mouse.y;
