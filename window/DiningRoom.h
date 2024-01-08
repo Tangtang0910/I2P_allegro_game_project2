@@ -26,6 +26,16 @@ private:
 
     vector<ALLEGRO_BITMAP *> *current_video = NULL;
     vector<ALLEGRO_BITMAP *> tool_man_talk1_frames;
+    vector<ALLEGRO_BITMAP *> tool_man_talk2_frames;
+    vector<ALLEGRO_BITMAP *> tool_man_talk3_frames;
+    vector<ALLEGRO_BITMAP *> tool_man_pet_frames;
+    vector<ALLEGRO_BITMAP *> tool_man_feed_frames;
+
+    vector<ALLEGRO_BITMAP *> beast_man_talk1_frames;
+    vector<ALLEGRO_BITMAP *> beast_man_talk2_frames;
+    vector<ALLEGRO_BITMAP *> beast_man_talk3_frames;
+    vector<ALLEGRO_BITMAP *> beast_man_pet_frames;
+    vector<ALLEGRO_BITMAP *> beast_man_feed_frames;
 
     ALLEGRO_SAMPLE *react_button = NULL;
     ALLEGRO_SAMPLE *trash_button = NULL;
@@ -34,6 +44,7 @@ private:
     double last_action_time;
     int fav;
     int current_frame = INT_MAX;
+    int tool_man_talk_ver;
 
     Character character = NO_ONE;
 };
