@@ -17,8 +17,8 @@ public:
 
     bool mouse_click(int startx, int starty, int width, int height, ALLEGRO_EVENT event);
 
-    const float video_speed = 0.2;
-    const int video_stay_frame = 50;
+    const float video_speed = 0.4;
+    const int video_stay_frame = 40;
 
 private:
     ALLEGRO_BITMAP *background = NULL;

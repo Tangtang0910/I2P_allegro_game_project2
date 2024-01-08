@@ -24,11 +24,17 @@ private:
     ALLEGRO_BITMAP *mineral = NULL;
     ALLEGRO_BITMAP *potion = NULL;
 
+    vector<ALLEGRO_BITMAP *> *current_video = NULL;
+    vector<ALLEGRO_BITMAP *> magic_effect_frames;
+    int current_frame = INT_MAX;
+
     bool grass_clicked = false;
     bool mineral_clicked = false;
     bool potion_clicked = false;
 
     vector<string> material_vec; //紀錄選了哪兩個材料
+
+    Character character = NO_ONE;
 };
 
 #endif

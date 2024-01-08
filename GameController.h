@@ -6,6 +6,7 @@
 #include "window/Menu.h"
 #include "window/DiningRoom.h"
 #include "window/Workshop.h"
+#include "window/Magic_effect.h"
 
 enum GameState {
     GAME_INIT,
@@ -33,12 +34,13 @@ private:
     ALLEGRO_SAMPLE *song = NULL;
 
     const char *title = "煉朋友術師";
-    const float FPS = 60;
+    const float FPS = 30;
 
     Window *current_window = NULL;
     Window *menu = NULL;
     Window *dining_room = NULL;
     Window *workshop = NULL;
+    Window *magic_effect = NULL;
 
     bool draw = false;
 };

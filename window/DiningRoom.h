@@ -19,6 +19,7 @@ private:
     ALLEGRO_BITMAP *text2 = NULL;
     ALLEGRO_BITMAP *text3 = NULL;
     ALLEGRO_BITMAP *heart = NULL;
+    ALLEGRO_BITMAP *arrow = NULL;
 
     ALLEGRO_BITMAP *tool_man = NULL;
     ALLEGRO_BITMAP *beast_man = NULL;
@@ -37,6 +38,12 @@ private:
     vector<ALLEGRO_BITMAP *> beast_man_pet_frames;
     vector<ALLEGRO_BITMAP *> beast_man_feed_frames;
 
+    vector<ALLEGRO_BITMAP *> magical_girl_talk1_frames;
+    vector<ALLEGRO_BITMAP *> magical_girl_talk2_frames;
+    vector<ALLEGRO_BITMAP *> magical_girl_talk3_frames;
+    vector<ALLEGRO_BITMAP *> magical_girl_pet_frames;
+    vector<ALLEGRO_BITMAP *> magical_girl_feed_frames;
+
     ALLEGRO_SAMPLE *react_button = NULL;
     ALLEGRO_SAMPLE *trash_button = NULL;
     ALLEGRO_SAMPLE *home_button = NULL;
@@ -44,7 +51,9 @@ private:
     double last_action_time;
     int fav;
     int current_frame = INT_MAX;
+    int frame_count;
     int tool_man_talk_ver;
+    int magical_girl_talk_ver;
 
     Character character = NO_ONE;
 };

@@ -5,7 +5,7 @@ ALLEGRO_FLAGS := $(shell pkg-config --cflags --libs $(ALLEGRO_LIBRARIES)) -lalle
 
 OUT:= game
 SOURCE = main.cpp GameController.cpp \
-	window/Window.cpp window/Menu.cpp window/DiningRoom.cpp window/Workshop.cpp
+	window/Window.cpp window/Menu.cpp window/DiningRoom.cpp window/Workshop.cpp window/Magic_effect.cpp
 OBJ := $(patsubst %.cpp,%.o,$(subst window/,,$(SOURCE)))
 
 all: 

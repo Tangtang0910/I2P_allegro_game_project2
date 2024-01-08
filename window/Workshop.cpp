@@ -13,6 +13,7 @@ Workshop::Workshop() {
     mineral = al_load_bitmap("./images/item/mineral.png");
     potion = al_load_bitmap("./images/item/potion.png");
 
+    magic_effect_frames = read_video("./images/magic_effect/magic_effect_", 60);
 }
 
 Workshop::~Workshop() {
@@ -28,7 +29,7 @@ Workshop::~Workshop() {
 }
 
 Action Workshop::process(ALLEGRO_EVENT event) {
-    if (mouse_click(820, 1300, 250, 170, event)) { // 按 home 鍵，切換到客廳
+    if (mouse_click(820, 1300, 250, 170, event) && material_vec.size() < 2) { // 按 home 鍵，切換到客廳
         al_play_sample(button_sound_effect, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
         return NEXT_WINDOW;
     }
@@ -55,11 +56,25 @@ Action Workshop::process(ALLEGRO_EVENT event) {
     }
 
     if (material_vec.size() == 2) { // 已經選 2 個材料 --> 生成朋友
+        current_video = &magic_effect_frames;
+
+        if (current_frame == INT_MAX) {
+            current_frame = 0;
+        }
+        else if (current_frame == current_video->size()){
+            if (character == TOOL_MAN) return MAGIC_EFFECT_TOOL_MAN;
+            else if (character == BEAST_MAN) return MAGIC_EFFECT_BEAST_MAN;
+            else if (character == MAGICAL_GIRL) return MAGIC_EFFECT_MAGICAL_GIRL;
+        }
+
         if ((material_vec[0] == "grass" && material_vec[1] == "potion") || (material_vec[0] == "potion" && material_vec[1] == "grass")) {
+            character = TOOL_MAN;
             return CREATE_TOOL_MAN;
         } else if ((material_vec[0] == "grass" && material_vec[1] == "mineral") || (material_vec[0] == "mineral" && material_vec[1] == "grass")) {
+            character = BEAST_MAN;
             return CREATE_BEAST_MAN;
         } else if ((material_vec[0] == "mineral" && material_vec[1] == "potion") || (material_vec[0] == "potion" && material_vec[1] == "mineral")) {
+            character = MAGICAL_GIRL;
             return CREATE_MAGICAL_GIRL;
         }
     }
@@ -82,18 +97,28 @@ void Workshop::draw() {
         al_draw_scaled_bitmap(potion, 0, 0, al_get_bitmap_width(potion), al_get_bitmap_height(potion), 1260 , 350 , al_get_bitmap_width(potion)* 2 , al_get_bitmap_height(potion)* 2, 0);
     }
     
+    float ratio = 2.5, speed = video_speed * ratio;
+    if (current_video != NULL && current_frame < current_video->size() / speed + video_stay_frame) {
+        int index = min((int) (current_frame * speed), (int) (current_video->size() - 1));
+        
+        al_draw_bitmap((*current_video)[index], 0, 100, 0);
+        //al_draw_scaled_bitmap((*current_video)[index], 0, 0, al_get_bitmap_width((*current_video)[index]), al_get_bitmap_height((*current_video)[index]), 620, 680, 600, 600, 0);
+        current_frame += 1;
+    }
 }
 
 void Workshop::play_sound(string material) {
-    if (material == "grass") al_play_sample(grass_sound_effect, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
-    else if (material == "potion") al_play_sample(potion_sound_effect, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
-    else if (material == "mineral") al_play_sample(mineral_sound_effect, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+    if (material == "grass") al_play_sample(grass_sound_effect, 0.6, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+    else if (material == "potion") al_play_sample(potion_sound_effect, 0.8, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+    else if (material == "mineral") al_play_sample(mineral_sound_effect, 0.8, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 }
 
 void Workshop::reset() {
     grass_clicked = false;
     potion_clicked = false;
     mineral_clicked = false;
+
+    current_frame = INT_MAX;
 
     material_vec.clear();
 }

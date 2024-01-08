@@ -38,6 +38,7 @@ GameController::GameController() {
     menu = new Menu();
     dining_room = new DiningRoom();
     workshop = new Workshop();
+    magic_effect = new Magic_effect();
 
     current_window = menu;
 }
@@ -51,6 +52,7 @@ GameController::~GameController() {
     delete menu;
     delete dining_room;
     delete workshop;
+    delete magic_effect;
 }
 
 void GameController::game_establish() {
@@ -96,6 +98,19 @@ GameState GameController::process_event() {
             ((DiningRoom *)dining_room)->set_character(BEAST_MAN);
         } else if (action == CREATE_MAGICAL_GIRL) {
             ((DiningRoom *)dining_room)->set_character(MAGICAL_GIRL);
+        } else if (action == MAGIC_EFFECT_TOOL_MAN) {
+            ((Magic_effect *)magic_effect)->set_character(TOOL_MAN);
+            current_window = magic_effect;
+        } else if (action == MAGIC_EFFECT_BEAST_MAN) {
+            ((Magic_effect *)magic_effect)->set_character(BEAST_MAN);
+            current_window = magic_effect;
+        } else if (action == MAGIC_EFFECT_MAGICAL_GIRL) {
+            ((Magic_effect *)magic_effect)->set_character(MAGICAL_GIRL);
+            current_window = magic_effect;
+        }
+    } else if (current_window == magic_effect) {
+        if (action == NEXT_WINDOW) {
+            current_window = dining_room;
         }
     }
 
