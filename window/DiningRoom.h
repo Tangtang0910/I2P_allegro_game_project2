@@ -53,6 +53,7 @@ private:
     int current_frame = INT_MAX;
     int frame_count;
     int tool_man_talk_ver;
+    int beast_man_talk_ver;
     int magical_girl_talk_ver;
 
     Character character = NO_ONE;

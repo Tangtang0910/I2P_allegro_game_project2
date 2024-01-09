@@ -24,18 +24,19 @@ DiningRoom::DiningRoom() {
     tool_man_pet_frames = read_video("./images/pet/tool_man/pet_", 8);
     tool_man_feed_frames = read_video("./images/feed/tool_man/時間軸1_", 27);
 
+    beast_man_talk_ver = 0;
     beast_man = al_load_bitmap("./images/character/beast_man.png");
     beast_man_talk1_frames = read_video("./images/talk/beast_man/talk1/talk1_", 36);
-    // beast_man_talk2_frames = read_video("./images/talk/tool_man/talk2/talk2_", 100);
+    beast_man_talk2_frames = read_video("./images/talk/beast_man/talk2/talk2_", 48);
     // beast_man_talk3_frames = read_video("./images/talk/tool_man/talk3/talk3_", 49);
     beast_man_pet_frames = read_video("./images/pet/beast_man/pet_", 36);
     beast_man_feed_frames = read_video("./images/feed/beast_man/feed_", 36);
 
     magical_girl_talk_ver = 0;
     magical_girl = al_load_bitmap("./images/character/magic_girl.png");
-    magical_girl_talk1_frames = read_video("./images/talk/magical_girl/talk1/talk1_", 72);
-    magical_girl_talk2_frames = read_video("./images/talk/magical_girl/talk2/talk2_", 83);
-    // magical_girl_talk3_frames = read_video("./images/talk/tool_man/talk3/talk3_", 49);
+    magical_girl_talk1_frames = read_video("./images/talk/magical_girl/talk1/talk1_", 132);
+    magical_girl_talk2_frames = read_video("./images/talk/magical_girl/talk2/talk2_", 142);
+    magical_girl_talk3_frames = read_video("./images/talk/magical_girl/talk3/talk3_", 89);
     magical_girl_pet_frames = read_video("./images/pet/magical_girl/pet_", 97);
     magical_girl_feed_frames = read_video("./images/feed/magical_girl/feed_", 109);
 }
@@ -169,14 +170,19 @@ void DiningRoom::play_action(string button) {
 
         } 
         else if (character == BEAST_MAN) {
-            current_video = &beast_man_talk1_frames;
+            if (beast_man_talk_ver == 2) beast_man_talk_ver = 0;
+            beast_man_talk_ver++;
+
+            if (beast_man_talk_ver == 1) current_video = &beast_man_talk1_frames;
+            else if (beast_man_talk_ver == 2) current_video = &beast_man_talk2_frames;
         } 
         else if (character == MAGICAL_GIRL) {
-            if (magical_girl_talk_ver == 2) magical_girl_talk_ver = 0;
+            if (magical_girl_talk_ver == 3) magical_girl_talk_ver = 0;
             magical_girl_talk_ver++;
 
             if (magical_girl_talk_ver == 1) current_video = &magical_girl_talk1_frames;
             else if (magical_girl_talk_ver == 2) current_video = &magical_girl_talk2_frames;
+            else if (magical_girl_talk_ver == 3) current_video = &magical_girl_talk3_frames;
         }
     } 
     else if (button == "feed") {
