@@ -20,7 +20,7 @@
 - 角色召喚與材料組合系統
 - 角色互動與動畫播放
 
-## 遊戲介紹
+## Game Features
 
 玩家將在遊戲中透過選擇材料召喚不同角色，並與角色成為朋友互動，一不小心可能會被絕交！
 
@@ -32,7 +32,7 @@
 
 遊戲包含角色對話、餵食、互動動畫、魔法效果與背景音樂。
 
-## 遊戲流程
+## Game Flow
 
 1. 從主選單開始遊戲。
 2. 進入工坊選擇兩種材料。
@@ -48,7 +48,7 @@
 
 每次最多選擇兩種材料。選擇兩種材料後，遊戲會進入召喚效果並生成對應角色。
 
-## 操作方式
+## Controls
 
 遊戲主要使用滑鼠操作：
 
@@ -64,32 +64,106 @@
 - 撫摸
 - 返回工坊
 
-## 使用技術
+## Requirements
+
+- macOS
+- GCC
+- Make
+- Homebrew
+- Allegro 5
+- pkg-config
+
+本專案目前的 `makefile` 使用 macOS 環境與 `pkg-config` 查找 Allegro 5 函式庫。
+
+## Installation
+
+### 1. 安裝 Homebrew
+
+如果尚未安裝 Homebrew，請至官方網站取得安裝方式：
+
+https://brew.sh/
+
+### 2. 安裝 Allegro 5 與 pkg-config
+
+```bash
+brew install allegro pkg-config
+```
+
+確認 Allegro 已正確安裝：
+
+```bash
+pkg-config --modversion allegro-5
+```
+
+### 3. 下載專案
+
+```bash
+git clone https://github.com/Tangtang0910/I2P_allegro_game_project2.git
+cd I2P_allegro_game_project2
+```
+
+## Build and Run
+
+請在專案根目錄執行，因為遊戲會使用 `images/` 與 `sound/` 的相對路徑。
+
+```bash
+make
+./game
+```
+
+也可以直接執行：
+
+```bash
+make run
+```
+
+> 如果目前的 `makefile` 尚未定義 `run` 指令，請使用 `./game` 執行遊戲。
+
+## Clean Build Files
+
+```bash
+make clean
+```
+
+`make clean` 會移除編譯產生的 `game` 執行檔。
+
+## Project Structure
+
+```text
+.
+├── main.cpp                       # 程式入口
+├── GameController.cpp             # 遊戲控制器實作
+├── GameController.h               # 遊戲控制器宣告
+├── global.h                       # 共用常數、列舉與 Allegro 標頭
+├── makefile                       # 編譯設定
+├── README.md                      # 專案說明文件
+├── window/
+│   ├── Window.cpp                 # 視窗基底類別實作
+│   ├── Window.h                   # 視窗基底類別宣告
+│   ├── Menu.cpp                   # 主選單
+│   ├── Menu.h
+│   ├── Workshop.cpp               # 工坊與材料選擇
+│   ├── Workshop.h
+│   ├── DiningRoom.cpp             # 餐廳與角色互動
+│   ├── DiningRoom.h
+│   ├── magic_effect.cpp           # 魔法召喚效果
+│   └── magic_effect.h
+├── images/
+└── sound/
+```
+
+## Technical Notes
+
+- 遊戲視窗大小設定為 `1900 × 1500`。
+- 遊戲計時器 FPS 設定為 `30`。
+- 遊戲透過 Allegro event queue 接收視窗、鍵盤、滑鼠與計時器事件。
+- `GameController` 負責管理遊戲主迴圈、事件處理與場景切換。
+- 遊戲場景由 `Menu`、`Workshop`、`DiningRoom` 與 `magic_effect` 類別負責。
+
+使用技術：
 
 - C++17
 - Allegro 5
 - Make
 - GCC
 - pkg-config
-
-## 系統需求
-
-- macOS
-- GCC 或 Clang
-- Make
-- Homebrew
-- Allegro 5
-- pkg-config
-
-## 安裝環境
-
-### 安裝 Homebrew
-
-如果尚未安裝 Homebrew，請參考官方網站：
-
-<https://brew.sh/>
-
-### 安裝 Allegro 5 與 pkg-config
-
-```bash
-brew install allegro pkg-config
